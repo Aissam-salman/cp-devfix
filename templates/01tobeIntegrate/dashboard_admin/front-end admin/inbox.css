@@ -1,0 +1,178 @@
+.inbox__ctn {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.inbox__filter, .section__alert {
+    display: flex;
+    flex-direction: column;
+    border: .0187rem solid #b9b9b9;
+    border-radius: .875rem;
+    background: #fff;
+}
+
+.inbox__filter {
+    padding: 5.625rem 1.5625rem;
+    justify-content: space-evenly;
+    gap: 17rem;
+    flex: .6;
+}
+
+.section__alert {
+    flex: auto;
+}
+
+.alert__labels {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.alert__label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    padding: .5rem 2rem;
+    cursor: pointer;
+}
+
+.alert__label:hover {
+    border-radius: .25rem;
+    background: #38383818;
+}
+
+
+.ctn__label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.active-alert {
+    color: #4880ff;
+    border-radius: .25rem;
+    background: #487fff18;
+}
+
+.active-alert:hover {
+    background: #487fff10;
+}
+
+
+
+.label__alert-devis, .svg-devis {
+    color: #00b69b;
+}
+
+.label__alert-piece, .svg-piece {
+    color: #5A8CFF;
+}
+
+.label__alert-employe, .svg-employe {
+    color: #fd9a56;
+}
+
+.label__alert-client, .svg-client {
+    color: #D456FD;
+}
+
+
+.alert__cta {
+    display: flex;
+    padding: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-search {
+    position: relative;
+    height: 100%;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    color: #202224;
+}
+
+.search-input {
+    width: 23.75rem;
+    height: 2.375rem;
+    border-radius: 1.25rem;
+    background: #F5F6FA;
+    border: .0375rem solid rgba(207, 207, 207, 0.1142);
+    caret-color: #202224;
+    text-indent: 3rem;
+    color: #202224;
+}
+
+.search-input::placeholder {
+    font-size: .875rem;
+    color: #20222483;
+}
+
+.search-input:focus {
+    border: .0375rem solid rgba(207, 207, 207, 0.4142);
+    outline: none;
+}
+
+
+.btn-archive, .btn-trash {
+    border-radius: .25rem;
+    border: .0375rem solid rgba(207, 207, 207, 0.4142);
+    background: transparent;
+    cursor: pointer;
+    padding: .3125rem;
+}
+
+.btn-archive:hover, .btn-trash:hover {
+    background: rgba(207, 207, 207, 0.4142);
+}
+
+.alert__list {
+    margin-left: 1.25rem;
+    margin-right: 2.375rem;
+    font-weight: .875rem;
+    font-weight: 500;
+}
+
+.alert-msg {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1.25rem 0;
+    border-bottom: .0125rem solid #9797973a;
+}
+
+.read {
+    background: #cccccc28;
+}
+
+.checkbox-col {
+    accent-color: #202224;
+}
+
+.title-col {
+    font-weight: 700;
+}
+
+.label-col span{
+    display: inline-block;
+    padding: .5rem;
+    border-radius: 3px;
+}
+.label-col .label__alert-devis {
+    background: #00b69b27;
+}
+.label-col .label__alert-piece {
+    background: #487fff27;
+}
+.label-col .label__alert-employe {
+    background: #fd995627;
+}
+.label-col .label__alert-client {
+    background: #D456FD27;
+}

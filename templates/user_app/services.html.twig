@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('user/services-page/services.css') }}" type="text/css">
+{% endblock %}
+
+
+{% block body %}
+	<main>
+		<section id="head-graphics">
+			<img class="service-banner" src="{{ asset('user/images/service-banner.jpg') }}" alt="Bannière de services">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="d-flex align-items-center justify-content-center">
+							<div class="text-center clearfix">
+								<h1 style="color:#FFFFFF" !important="">Nos Services</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="content" class="py-5 faults_repaire service-list-container">
+			<div class="container clearfix">
+				<div class="row">
+					<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+						<div class="col_services ">
+							<div class="feature-box fbox-center fbox-light fbox-plain fbox-services fr_inner_section">
+								<div class="fbox-icon">
+									<img src="{{ asset('user/images/icons/headset.png') }}" alt="Tablette & iPad">
+								</div>
+								<h3>Tablette & iPad</h3>
+								<p>Des iPads aux tablettes pour enfants, nous prenons en charge toutes les réparations. Redonnez vie à votre tablette !</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+						<div class="col_services ">
+							<div class="feature-box fbox-center fbox-light fbox-plain fbox-services fr_inner_section">
+								<div class="fbox-icon">
+									<img src="{{ asset('user/images/icons/plug.png') }}" alt="Port de charge">
+								</div>
+								<h3>Port de charge</h3>
+								<p>Un problème de charge ? Nous réparons les ports de charge de tous vos appareils, rapidement et efficacement !</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+						<div class="col_services ">
+							<div class="feature-box fbox-center fbox-light fbox-plain fbox-services fr_inner_section">
+								<div class="fbox-icon">
+									<img src="{{ asset('user/images/icons/camera.png') }}" alt="Caméra iSight">
+								</div>
+								<h3>Caméra</h3>
+								<p>Caméra frontale ou Face ID défectueux ? Confiez-nous votre appareil pour une réparation experte !</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+						<div class="col_services ">
+							<div class="feature-box fbox-center fbox-light fbox-plain fbox-services fr_inner_section">
+								<div class="fbox-icon">
+									<img src="{{ asset('user/images/icons/on.png') }}" alt="Bouton d'alimentation">
+								</div>
+								<h3>Bouton d'alimentation</h3>
+								<p>Des soucis avec votre bouton d'alimentation/verrouillage ? Nous avons la solution !</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+						<div class="col_services ">
+							<div class="feature-box fbox-center fbox-light fbox-plain fbox-services fr_inner_section">
+								<div class="fbox-icon">
+									<img src="{{ asset('user/images/icons/battery.png') }}" alt="Batterie">
+								</div>
+								<h3>Batterie</h3>
+								<p>Problème de batterie ? Optez pour notre service de remplacement rapide et repartez avec un appareil comme neuf !</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+						<div class="col_services ">
+							<div class="feature-box fbox-center fbox-light fbox-plain fbox-services fr_inner_section">
+								<div class="fbox-icon">
+									<img src="{{ asset('user/images/icons/lock.png') }}" alt="Logiciel/Déblocage">
+								</div>
+								<h3>Logiciel/Déblocage</h3>
+								<p>Mise à jour, restauration ou déblocage ? Laissez nos experts s'occuper de tout, instantanément !</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+						<div class="col_services ">
+							<div class="feature-box fbox-center fbox-light fbox-plain fbox-services fr_inner_section">
+								<div class="fbox-icon">
+									<img src="{{ asset('user/images/icons/smartphone.png') }}" alt="Écran">
+								</div>
+								<h3>Écran</h3>
+								<p>Un écran cassé ? Confiez-nous votre appareil pour une réparation rapide avec garantie de satisfaction.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main>
+{% endblock %}

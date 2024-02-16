@@ -1,0 +1,309 @@
+.table-container {
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-top: 2rem;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 10px;
+}
+
+tr {
+    border: 1px solid #ddd;
+    font-size: 13px;
+}
+
+td {
+    padding: 20px;
+}
+
+th {
+    text-align: left;
+    vertical-align: left;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 10px;
+    padding-left: 20px;
+}
+
+
+.teamAdd {
+    display: flex;
+    align-items: center;
+}
+
+.teamAdd button {
+    border: none;
+    /* Supprimer la bordure du bouton */
+    background: none;
+    /* Supprimer l'arrière-plan du bouton */
+    cursor: pointer;
+}
+
+.teamAdd img {
+    opacity: 1;
+    /* Opacité du logo */
+    width: 60px;
+    /* Largeur du logo, ajustez selon vos besoins */
+    height: auto;
+    /* Conserver les proportions de l'image */
+    margin-left: 20px;
+}
+
+
+
+.btn-show-team {
+    background: #FAFBFD;
+    border-radius: 8px;
+    padding: 6px;
+    border: .6px solid #d5d5d5;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+
+.btn-show-team svg {
+    color: #d5d5d5;
+    width: 20px;
+    height: 20px;
+}
+
+.btn-show-team:hover {
+    border: .6px solid #535252;
+}
+
+.btn-show-team:hover svg {
+    color: #535252;
+}
+
+
+.table-container {
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-family: "Nunito Sans", sans-serif;
+    margin-right: 0.7rem;
+
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 10px;
+    height: 100%;
+}
+
+tr {
+    border: 1px solid #ddd;
+    font-size: 13px;
+}
+
+td {
+padding: 20px;
+}
+
+th {
+text-align: left;
+vertical-align: left;
+padding-top: 15px;
+padding-bottom: 15px;
+padding-right: 10px;
+padding-left: 20px;
+
+}
+
+#boutons {
+
+    text-align: right;
+    margin-right: 10px;
+
+}
+
+#boutons button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+#boutons svg {
+    width: 43px;
+    height: 32px;
+}
+
+#boutons button:hover svg {
+    opacity: 0.8;
+}
+
+.teamAdd {
+    display: flex;
+    align-items: center;
+}
+
+.teamAdd button {
+    border: none; /* Supprimer la bordure du bouton */
+    background: none; /* Supprimer l'arrière-plan du bouton */
+    cursor: pointer;
+}
+
+.teamAdd img {
+    opacity: 1; /* Opacité du logo */
+    width: 60px; /* Largeur du logo, ajustez selon vos besoins */
+    height: auto; /* Conserver les proportions de l'image */
+    margin-left: 20px;
+}
+
+
+.titleTeam {
+width: 90%;
+}
+
+.form-container {
+    text-align: center;
+}
+
+
+.inputContainer {
+    margin-top: 50px;
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    border-image: linear-gradient(to right, #000, transparent, #000);
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.977);
+    height: auto;
+    width: 90%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+    padding: 60px;
+}
+
+.inputContainer .form-label {
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: #333;
+}
+.inputContainer:hover {
+    transform: scale(1.05);
+}
+
+.labelInput {
+margin-bottom: 10px;
+}
+
+
+.selectRole, .input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8fafadf;
+    background-color: rgb(241, 241, 241);
+}
+
+.selectRole {
+    max-width: 160px;
+    width: 100%;
+}
+
+.btn-valider {
+    background-color: #0080FF;
+    color: white;
+    padding: 12px 20px;
+    margin-top: 40px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 240px;
+}
+
+
+.btn-valider:hover {
+    background-color: #4548a0;
+}
+
+
+
+.labelTextInputNom {
+    display:flex;
+}
+
+.labelTextInput {
+display:flex;
+}
+
+
+
+.textTel {
+
+  margin-left: 145px;
+  margin-bottom: 10px;
+
+}
+
+
+
+.textRole {
+
+    margin-left: 290px;
+
+}
+
+.textConfirmPassword {
+
+    margin-left: 240px;
+
+}
+
+
+.alignContent {
+
+display:flex;
+flex-direction: column;
+align-items: flex-start;
+justify-content: center;
+width: 100%;
+margin: 0 45px;
+
+}
+
+.containerLabelInput {
+
+display:flex;
+align-items: center;
+justify-content: center;
+margin: 30px 0;
+}
+
+@media screen and (max-width: 680px) {
+    .table-container thead {
+        display: none;
+    }
+
+    .table-container, .table-container tbody, .table-container tr, .table-container td {
+        display: block;
+        width: 100%;
+    }
+
+    .table-container tr {
+        border: .0625rem solid #ccc;
+    }
+
+    .table-container td {
+        text-align: right;
+        position: relative;
+    }
+
+    .table-container td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-weight: 600;
+        text-align: left;
+    }
+
+}

@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('user/device-repair/device-repair.css') }}" type="text/css">
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('user/device-repair/device-repair.js') }}" defer></script>
+{% endblock %}
+
+{% block body %}
+	<main>
+		<section id="content">
+			<div class="container topmargin-sm clearfix">
+				<div class="row">
+					<div class="col-md-12 col-lg-12">
+						<div class="row">
+							<div class="offset-xl-1 col-xl-3 offset-lg-1 col-lg-3 col-md-4 col-12">
+								<div class="phone-image mt-0 m_detail_section">
+									<img data-animate="fadeInLeft" class="fadeInLeft animated" src="{{ asset('user/images/mobile/' ~ modele.imgModele) }}" alt="iPhone 12 Pro Max">
+									<h4 class="mt-1 mb-2">
+										<strong>{{ modele.libModele }}</strong>
+									</h4>
+									<a href="{{ path('app_device-model', {'idMarque': modele.idMarque.idMarque}) }}" data-toggle="modal" data-target="#ChangeModel" class="btn btn-outline-secondary btn-block">
+										<i class="icon-refresh"></i>&nbsp;
+											&nbsp;Changer de Modèle?</a>
+								</div>
+							</div>
+							<div class="col-xl-7 col-lg-7 col-md-8 col-12">
+								<div class="block">
+
+									<div id="device-prop-area" class="fields-as-boxes version_fields_section">
+										<div class="accordion accordion-bg clearfix">
+											<div class="model-details-panel" data-row_type="radio" data-required="0">
+												<div class="acctitle">
+													<span class="h5 pb-0 mb-0 ml-2">Quel est le problème avec votre appareil ?</span>
+													<span class="validation-msg text-danger"></span>
+												</div>
+												<div class="acc_content model_detail_redio clearfix nopadding my-4">
+													<div class="btn-group-toggle radio_select_buttons radio_select_repair_buttons" id="field-2932" data-toggle="buttons">
+														{% if tarifs %}
+															<form action="{{ path('app_devis') }}" method="post">
+																{% for tarif in tarifs %}
+																	<label for="{{ tarif.idTarif }}"
+																		id="{{ tarif.idPanne.libPanne }}"
+																		class="radios font-body ls0 nott rounded-0 radio_btn d-flex align-items-center btn btn-outline-dark  image_have"
+																		data-input-type="radio">
+																		<div class="inner">
+																			<div class="images">
+																				<img src="{{ asset('user/images/' ~ tarif.idPanne.imgPanne) }}" alt="{{ tarif.idPanne.libPanne }}" width="30px" id="{{ tarif.idPanne.libPanne }}">
+																			</div>
+																			<input type="checkbox"
+																				name="tarifIds[]"
+																				id="{{ tarif.idTarif }}"
+																				value="{{ tarif.idTarif }}" autocomplete="off"
+																				data-default="0">
+																			<h5 class="mb-0">{{ tarif.idPanne.libPanne }}</h5>
+																			<div class="item_price text-primary h5 mb-0">
+																				<strong>{{ tarif.montant|number_format(2, ',', ' ') }} €</strong>
+																			</div>
+																		</div>
+																	</label>
+																{% endfor %}
+																<div class="radio_btn d-flex align-items-center btn suivant-button-container">
+																	<div class="inner">
+																		<button type="submit" class="button button-3d nomargin sell-this-device" id="get-price-btn" role="button">
+																			Suivant <i class="icon-arrow-right"></i>
+																		</button>
+																	</div>
+																</div>
+															</form>
+														{% else %}
+															<div class="center" role="alert">
+																<p>Pas de reparation disponible pour cette modèle</p>
+																<div class="list-inline">
+																	<a href="{{ url('app_homepage') }}#product-categories" class="btn btn-lg mr-3 btn-outline-light rounded-pill ">
+																		recommencer
+																	</a>
+																</div>
+															</div>
+														{% endif %}
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									{# <div class="row clearfix fright">
+										<div class="col-md-12">
+											<div class="form-group mx-sm-2 mb-2 next-button-container">
+												<a href="{{ url('app_devis') }}" class="button button-3d nomargin sell-this-device" id="get-price-btn" role="button">
+													Suivant
+													<i class="icon-arrow-right"></i>
+												</a>
+											</div>
+										</div>
+									</div> #}
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+{% endblock %}
+

@@ -1,0 +1,203 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('user/user-dashboard/user-dashboard.css') }}" type="text/css">
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('user/user-dashboard/user-dashboard.js') }}" defer></script>
+{% endblock %}
+
+{% block body %}
+	<main>
+		<div class="container clearfix center devis-list-form-container">
+			<div class="heading-block topmargin-sm bottommargin-sm center mes-devis-container">
+				<h3 class="col-md-12 title">Mes devis</h3>
+
+				<div class="table-container">
+					<div class="table-liste-devis-container">
+						<table class="table caption-top">
+							<thead>
+								<tr>
+									<th scope="col">status</th>
+									<th scope="col">reference</th>
+									<th scope="col">date</th>
+									<th scope="col">marque</th>
+									<th scope="col">modèle</th>
+									<th scope="col">réparation</th>
+									<th scope="col">prix</th>
+									<th scope="col">délais</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for devi in devis %}
+									<tr>
+										<td class="td">
+											<div>
+												{% if devi.statut == 0 %}
+													<div class="icon-container non-accepte">
+														<i class="fa fa-ban icon" aria-hidden="true"></i>
+													</div>
+												{% elseif devi.statut == 1 %}
+													<div class="icon-container en-attente">
+														<i class="fa fa-clock-o icon" aria-hidden="true"></i>
+													</div>
+												{% elseif devi.statut == 2 %}
+													<div class="icon-container en-cours">
+														<i class="fa fa-wrench icon" aria-hidden="true"></i>
+													</div>
+												{% elseif devi.statut == 3 %}
+													<div class="icon-container termine">
+														<i class="fa fa-flag icon" aria-hidden="true"></i>
+													</div>
+												{% endif %}
+											</div>
+										</td>
+										<td><p>{{ devi.numDevis }}</p></td>
+										<td><p>{{ devi.dateDevis|date('d/m/Y') }}</p></td>
+										<td><p>{{ devi.idReparation.idAppareil.idModele.idMarque.libMarque }}</p></td>
+										<td><p>{{ devi.idReparation.idAppareil.idModele.libModele }}</p></td>
+										<td><p>{{ devi.idReparation.observation }}</p></td>
+										<td><p>{{ devi.prixTtc|number_format(2, ',', ' ') }} €</p></td>
+										<td><p>{{ devi.dateRestitution|date('d/m/Y') }}</p></td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+
+
+					<div class="legende-status">
+						<div class="status-container non-accepte-container">
+							<p>non accepté</p>
+							<div class="icon-container non-accepte">
+								<i class="fa fa-ban icon" aria-hidden="true"></i>
+							</div>
+						</div>
+
+						<div class="status-container en-attente-container">
+							<p>en attente</p>
+							<div class="icon-container en-attente">
+								<i class="fa fa-clock-o" aria-hidden="true"></i>
+							</div>
+						</div>
+
+						<div class="status-container en-cours-container">
+							<p>en cours</p>
+							<div class="icon-container en-cours">
+								<i class="fa fa-wrench icon" aria-hidden="true"></i>
+							</div>
+						</div>
+
+						<div class="status-container termine-container">
+							<p>terminé</p>
+							<div class="icon-container termine">
+								<i class="fa fa-flag icon" aria-hidden="true"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row g-3 devis-form infos-acoount-form">
+				<h3 class="col-md-12 title">Mes infos</h3>
+
+				<div class="row g-3 edit-form hide" id="edit-form">
+					{{ form_start(form) }}
+						<div class="row g-3">
+							<div class="col-md-6">
+								{{ form_row(form.nom, {
+									'attr': {'class': 'form-control', 'disabled': 'disabled'},
+									'label_attr': {'class': 'form-label'}
+								}) }}
+							</div>
+							<div class="col-md-6">
+								{{ form_row(form.prenom, {
+									'attr': {'class': 'form-control', 'disabled': 'disabled'},
+									'label_attr': {'class': 'form-label'}
+								}) }}
+							</div>
+						</div>
+						<div class="row g-3">
+							<div class="col-md-6">
+								{{ form_row(form.email, {
+									'attr': {'class': 'form-control', 'disabled': 'disabled'},
+									'label_attr': {'class': 'form-label'}
+								}) }}
+							</div>
+							<div class="col-md-6">
+								{{ form_row(form.numero, {
+									'attr': {'class': 'form-control', 'disabled': 'disabled'},
+									'label_attr': {'class': 'form-label'}
+								}) }}
+							</div>
+						</div>
+						<div class="row g-3">
+							<div class="col-12">
+								{{ form_row(form.adresse, {
+									'attr': {'class': 'form-control', 'disabled': 'disabled'},
+									'label_attr': {'class': 'form-label'}
+								}) }}
+							</div>
+							<div class="col-12">
+								{{ form_row(form.complementAdresse, {
+									'attr': {'class': 'form-control', 'disabled': 'disabled'},
+									'label_attr': {'class': 'form-label'}
+								}) }}
+							</div>
+						</div>
+						<div class="row g-3">
+							<div class="col-12 buttons-container">
+								<button type="submit" class="btn btn-primary save-btn">Enregistrer</button>
+								<a class="btn" id="cancel-edit-btn">cancel</a>
+							</div>
+						</div>
+					{{ form_end(form) }}
+				</div>
+
+
+				<div class="row g-3 view-mes-info" id="view-mes-info">
+					<div class="col-md-6 start-flex bottom-space">
+						<label for="inputEmail4" class="form-label bg-transparent">Nom</label>
+						<input required disabled value="{{ app.user.nom }}" type="text" class="form-control" id="inputNom">
+					</div>
+					<div class="col-md-6 start-flex bottom-space">
+						<label for="inputPassword4" class="form-label bg-transparent">Prénom</label>
+						<input required disabled value="{{ app.user.prenom }}" type="text" class="form-control" id="inputPrenome">
+					</div>
+					<div class="col-md-6 start-flex bottom-space">
+						<label for="inputEmail4" class="form-label bg-transparent">Email</label>
+						<input required disabled value="{{ app.user.email }}" type="email" class="form-control" id="inputEmail">
+					</div>
+					<div class="col-md-6 start-flex bottom-space">
+						<label for="inputAddress" class="form-label bg-transparent">Télephone</label>
+						<input required disabled value="{{ app.user.numero }}" type="number" class="form-control" id="inputTelephone" placeholder="0123456789">
+					</div>
+					<div class="col-12 start-flex bottom-space">
+						<label for="inputAddress" class="form-label bg-transparent">Adresse</label>
+						<input required disabled value="{{ app.user.adresse }}" type="text" class="form-control" id="inputAddress" placeholder="1 Rue De..." aria-placeholder="">
+					</div>
+					<div class="col-12 start-flex bottom-space">
+						<label for="inputAddress" class="form-label bg-transparent">Complement d'adresse</label>
+						<input required disabled value="{{ app.user.complementAdresse }}" type="text" class="form-control" id="inputAddress2" placeholder="Appartement N...">
+					</div>
+					<div class="col-md-6 start-flex bottom-space">
+						<label for="inputEmail4" class="form-label bg-transparent">Ville</label>
+						<input required disabled value="{{ app.user.idVille.nomVille }}" type="text" class="form-control" id="inputVille" placeholder="Lille">
+					</div>
+					<div class="col-md-6 start-flex bottom-space">
+						<label for="inputPassword4" class="form-label bg-transparent">Code Postale</label>
+						<input required disabled value="{{ app.user.idVille.codePostal }}" type="number" class="form-control" id="inputCP" placeholder="59000">
+					</div>
+
+					<div class="col-12 buttons-container">
+						<button type="submit" class="btn btn-primary" id="infos-edit-btn">Editer</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+{% endblock %}

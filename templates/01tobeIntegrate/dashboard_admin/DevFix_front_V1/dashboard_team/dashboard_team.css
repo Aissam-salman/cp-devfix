@@ -1,0 +1,83 @@
+.table-container {
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-family: "Nunito Sans", sans-serif; 
+    
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 10px;
+}
+
+tr {
+    border: 1px solid #ddd;
+    font-size: 13px;
+}
+
+td {  
+padding: 20px;
+}
+
+th {
+text-align: left;
+vertical-align: left;
+padding-top: 15px;
+padding-bottom: 15px;
+padding-right: 10px;
+padding-left: 20px;
+
+}
+
+#boutons {
+    
+    text-align: right;
+    margin: 5px auto;
+    
+}
+
+#boutons button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+#boutons svg {
+    width: 43px;
+    height: 32px;
+}
+
+#boutons button:hover svg {
+    opacity: 0.8;
+}
+
+.teamAdd {
+
+    font-family: "Nunito Sans", sans-serif; 
+    font-size: 15px;
+    display: flex;
+    margin-left: 20px;
+
+
+}
+
+.teamAdd button {
+    border: none; /* Supprimer la bordure du bouton */
+    background: none; /* Supprimer l'arrière-plan du bouton */
+    cursor: pointer;
+}
+
+.teamAdd img {
+    opacity: 1; /* Opacité du logo */
+    width: 60px; /* Largeur du logo, ajustez selon vos besoins */
+    height: auto; /* Conserver les proportions de l'image */
+    margin-left: 20px;
+}
+
+.infoLine-container {
+
+font-family: "Nunito Sans", sans-serif; 
+font-size: 12px;
+}

@@ -1,0 +1,268 @@
+.log-in-icon-container {
+    display: none;
+}
+
+
+/* MES DEVIS */
+.devis-list-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.mes-devis-container {
+    width: 100%;
+}
+
+.table-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.table-liste-devis-container {
+    width: 100%;
+    max-height: 500px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    margin-right: 20px;
+    flex: content;
+}
+
+.table {
+    margin-bottom: 0 !important;
+}
+
+thead {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    background: var(--primary_color);
+    color: #fff;
+}
+
+.table thead th {
+    border: none;
+    margin: 0 10px;
+}
+
+.table tbody tr td {
+    border-top: none;
+    border-bottom: 1px solid var(--primary_color);
+    padding: 0;
+}
+
+.table tbody tr td p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    border-top: none;
+    padding: 5px;
+    height: 40px;
+    margin: 5px;
+}
+
+.td div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.id-devis {
+    font-weight: 900;
+    color: #fff;
+    background: var(--primary_color);
+    border-radius: 30px;
+    padding: 0 10px;
+}
+.id-devis.non-accepte {
+    background: var(--primary_color);
+}
+.id-devis.en-attente {
+    background: #FF5C00;
+}
+.id-devis.en-cours {
+    background: #0024E0;
+}
+.id-devis.termine {
+    background: #00E03F;
+}
+
+
+/* LEGENDE STATUS */
+.legende-status {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+}
+
+.status-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.status-container p {
+    margin-bottom: 5px;
+    font-weight: 900;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+.non-accepte-container p {
+    color: var(--primary_color);
+}
+.en-attente-container p {
+    color: #FF5C00;
+}
+.en-cours-container p {
+    color: #0024E0;
+}
+.termine-container p {
+    color: #00E03F;
+}
+
+.table-container .icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.non-accepte {
+    background: var(--primary_color);
+}
+.en-attente {
+    background: #FF5C00;
+}
+.en-cours {
+    background: #0024E0;
+}
+.termine {
+    background: #00E03F;
+}
+
+.table-container i {
+    color: #fff;
+}
+
+
+
+/* MES INFOS */
+.infos-acoount-form {
+    width: 100%;
+    border-radius: 30px;
+    background: var(--primary_color);
+    padding: 40px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 50px;
+}
+
+.infos-acoount-form h3 {
+    font-weight: 900;
+    color: #fff;
+}
+
+.infos-acoount-form div {
+    margin: 10px 0;
+}
+
+.infos-acoount-form label {
+    color: #fff;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+
+
+.btn {
+    border-radius: 40px;
+    width: 250px !important;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border: 3px solid #191919;
+    background: #191919;
+    color: #fff !important;
+    cursor: pointer;
+    transition: all ease-in-out 200ms;
+}
+.btn:hover {
+    color: #000 !important;
+    background: #fff !important;
+    opacity: 1;
+    border: 3px solid #191919;
+}
+
+.form-control:disabled, .form-control[readonly] {
+    background: transparent;
+    border: none;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    border-left: 2px solid #fff;
+    color: #fff;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.hide {
+    display: none;
+}
+
+
+/* Edit form */
+.edit-form {
+    width: 100%;
+}
+
+.edit-form form {
+    width: 100%;
+    margin: 0;
+}
+
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 25px;
+    }
+
+    .table-liste-devis-container {
+        width: 100%;
+        overflow-x: scroll;
+        margin: 0 0 20px 0;
+    }
+
+    .legende-status {
+        flex: 1;
+    }
+
+
+    .infos-acoount-form {
+        padding: 20px;
+        width: 100%;
+    }
+
+    .infos-acoount-form div {
+        padding: 0;
+        margin: 5px 0;
+    }
+
+    .save-btn {
+        margin-bottom: 10px;
+    }
+
+}

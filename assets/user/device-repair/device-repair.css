@@ -1,0 +1,52 @@
+.version_fields_section .acctitle .h5 { 
+    text-transform: uppercase;
+}
+
+
+.next-button-container {
+    margin: 50px 0 0 0;
+    padding: 0;;
+}
+
+.next-button-container a {
+    border-radius: 40px !important;
+}
+
+
+.selected {
+    background-color: var(--primary_color);
+    opacity: 0.4;
+    box-shadow: none;
+}
+
+.suivant-button-container {
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.button.disabled {
+    opacity: 0.5;
+    color: var(--white);
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.button i {
+    margin: 0 !important;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    pointer-events: none;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+:active, :focus {
+    outline: none !important;
+}
+
+@media (max-width: 767px) {
+
+}

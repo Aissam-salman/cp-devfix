@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('user/device-brand/device-brand.css') }}" type="text/css">
+{% endblock %}
+
+
+{% block body %}
+	<main>
+		<div class="container clearfix center brand">
+			<div class="heading-block topmargin-sm bottommargin-sm center">
+				<h3>Choisir la marque</h3>
+			</div>
+        {% if brands %}
+			<ul class="clients-grid grid-6 bottommargin-sm clearfix brand_category_selection center-grid device-brands">
+				{% for brand in brands %}
+					<li>
+						<a href="{{ path('app_device-model', {'idMarque': brand.idMarque}) }}" class="d-flex align-items-center">
+							<div class="inner mx-auto">
+								<img src="{{ asset('user/images/brand/' ~ brand.logoMarque) }}" alt="{{ brand.libMarque }}">
+							</div>
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<div class="center" role="alert">
+				<p>Pas de marque disponible pour cette appareil</p>
+				<div class="list-inline">
+					<a href="{{ url('app_homepage') }}#product-categories" class="btn btn-lg mr-3 btn-outline-light rounded-pill ">
+						recommencer
+					</a>
+				</div>
+			</div>
+		{% endif %}
+		</div>
+	</main>
+{% endblock %}

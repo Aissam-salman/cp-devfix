@@ -1,0 +1,248 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('user/homepage/homepage.css') }}" type="text/css">
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('user/homepage/floating-smartphone.js') }}" defer></script>
+	<script src="{{ asset('user/homepage/homepage-q-a.js') }}" defer></script>
+{% endblock %}
+
+
+{% block body %}
+        <main>
+			<section id="showcase" class="slider_bg_color py-0">
+				<div class="area">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+				<div class="container">
+					<div class="home-slide">
+						<div class="home-slide-item">
+							<div class="row justify-content-center">
+								<div class="col-md-6 col-lg-6 col-xl-6 showcase-text-container">
+									<div class="block showcase-text text-container calculate-cost pr-0 mr-0">
+										<h1><span>Réparez</span> en un <span>Clic</span></h1>
+										<p>
+											Rendez-nous visite pour des réparations mobiles rapides et fiables. Des écrans fissurés aux soucis de batterie, nos experts vous assurent une solution efficace pour tous vos appareils !
+										</p>
+										<div class="list-inline">
+											<a href="#product-categories" class="btn btn-lg mr-3 btn-outline-light rounded-pill">
+												commencer
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-6 col-xl-6">
+									<div class="block px-0 mx-0 pb-0 mb-0 showcase-image">
+										<img class="animated fadeIn parallax" src="{{ asset('user/images/section/120210107140025.png') }}"
+											alt="Select device to get your repair started">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	
+			<section class="white-bg pb-5">
+				<div class="container clearfix">
+					<div class="heading-block topmargin-lg bottommargin-sm center">
+						<h3>Pourquoi nous ?</h3>
+					</div>
+	
+					<div class="why-choose pb-5">
+						<div class="row">
+	
+	
+							<div class="col-md-4 ">
+								<div class="feature-box fbox-center fbox-light fbox-effect">
+									<div class="fbox-icon">
+										<a href="#"><i class="icon-line-clock i-alt"></i></a>
+									</div>
+	
+									<h4>Réparation rapide</h4>
+									<p>Nous comprenons l'urgence de retrouver votre appareil en parfait état. C'est pourquoi nous nous engageons
+										à réaliser les réparations les plus courantes en moins de 30 minutes, sans jamais compromettre la
+										qualité.</p>
+								</div>
+							</div>
+	
+	
+	
+							<div class="col-md-4 ">
+								<div class="feature-box fbox-center fbox-light fbox-effect">
+									<div class="fbox-icon">
+										<a href="#"><i class="icon-phone2 i-alt"></i></a>
+									</div>
+	
+									<h4>Reparation de qualité</h4>
+									<p>Nos techniciens expérimentés utilisent uniquement des pièces de haute qualité pour garantir que chaque
+										réparation répond à nos normes élevées. Faites confiance à notre expertise pour des réparations fiables
+										et durables.</p>
+								</div>
+							</div>
+	
+	
+	
+							<div class="col-md-4  col_last">
+								<div class="feature-box fbox-center fbox-light fbox-effect">
+									<div class="fbox-icon">
+										<a href="#"><i class="icon-screen i-alt"></i></a>
+									</div>
+	
+									<h4>Meilleur prix</h4>
+									<p>Obtenez le meilleur rapport qualité-prix pour vos réparations mobiles. Nous vous proposons des tarifs
+										compétitifs et transparents, sans frais cachés, pour vous assurer une expérience client exceptionnelle à
+										un prix abordable.</p>
+								</div>
+							</div>
+	
+	
+						</div>
+					</div>
+				</div>
+			</section>
+	
+			<section class=" brand_section_category">
+				<div class="section brand nobg m-0 py-5">
+					<div class="container clearfix center">
+						<div class="clear"></div>
+						<div class="heading-block bottommargin-sm center">
+							<h3 style="color:#000000" !important="">Appareil à restaurer ?</h3>
+						</div>
+						<div class=" nobottommargin clearfix ">
+							<div class="row center-grid" id="product-categories">
+								{% for typeAppareil in typeAppareils %}
+									<div class="col-md-4 col-sm-4 col-xl-3 col-lg-4 col-6 device_category">
+										<a href="/device-brand/{{ typeAppareil.idTypeAppareil }}" class="card align-items-center">
+											<div class="img inner mx-auto">
+												<img class="main_img" src="{{ asset('user/images/categories/' ~ typeAppareil.imgTypeAppareil) }}" alt="{{ typeAppareil.libTypeAppareil }}">
+												<img class="main_hover_img" src="{{ asset('user/images/categories/hover_' ~ typeAppareil.imgTypeAppareil) }}" alt="{{ typeAppareil.libTypeAppareil }}">
+												<h4>{{ typeAppareil.libTypeAppareil }}</h4>
+											</div>
+										</a>
+									</div>
+								{% endfor %}
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+	
+			<section class="primary-color-bg py-4 easy_step" id="section-about">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="block how-to-work text-center">
+								<div class="heading-block topmargin-lg bottommargin-sm center">
+									<h3 class="text-white">Réparation en 3 Pas</strong></h3>
+								</div>
+	
+								<div class="row center_content">
+	
+									<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+										<div class="feature-box fbox-center fbox-light fbox-effect">
+											<div class="fbox-icon"><a href="#"><img src="{{ asset('user/images/section/120201105134407.png') }}"
+														class="img-fluid" alt=""></a></div>
+											<h4 class="text-white">Sélection Sur Mesure</h4>
+											<p class="text-white">Choisissez le service adapté à votre besoin, avec une solution rapide et précise pour chaque problème.</p>
+										</div>
+									</div>
+	
+									<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+										<div class="feature-box fbox-center fbox-light fbox-effect">
+											<div class="fbox-icon"><a href="#"><img src="{{ asset('user/images/section/220201105134407.png') }}"
+														class="img-fluid" alt=""></a></div>
+											<h4 class="text-white">Devis en un clic</h4>
+											<p class="text-white">Obtenez rapidement une estimation claire et sans engagement, simplifiant votre planification de réparation.</p>
+										</div>
+									</div>
+	
+									<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+										<div class="feature-box fbox-center fbox-light fbox-effect">
+											<div class="fbox-icon"><a href="#"><img src="{{ asset('user/images/section/320201105134407.png') }}"
+														class="img-fluid" alt=""></a></div>
+											<h4 class="text-white">Rapidité Garantie</h4>
+											<p class="text-white">Profitez d'un service express sans compromettre la qualité, pour une réparation efficace et fiable.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	
+			<div class="q-a">
+				<div class="heading-block topmargin-lg bottommargin-sm center">
+					<h3>FAQ</h3>
+				</div>
+				<ul>
+					<li>
+						<div class="question-container">
+							<h4 class="question">Combien de temps serai-je sans mon appareil ?</h4>
+							<i class="fa fa-angle-double-down arrow-down" aria-hidden="true"></i>
+						</div>
+						<div class="reponse-container">
+							<p class="reponse">Les réparations peuvent être aussi rapides que 15 minutes en magasin, jusqu'à 5 jours ouvrables.</p>
+						</div>
+					</li>
+					<li>
+						<div class="question-container">
+							<h4 class="question">Serai-je informé durant la réparation ?</h4>
+							<i class="fa fa-angle-double-down arrow-down" aria-hidden="true"></i>
+						</div>
+						<div class="reponse-container">
+							<p class="reponse">Oui, nous mettons à jour chaque étape via un suivi en temps réel qui sera affiché dans le dahsboard de votre compte.</p>
+						</div>
+					</li>
+					<li>
+						<div class="question-container">
+							<h4 class="question">Mes données sont-elles sécurisées ?</h4>
+							<i class="fa fa-angle-double-down arrow-down" aria-hidden="true"></i>
+						</div>
+						<div class="reponse-container">
+							<p class="reponse">Toutes vos données sensibles sont sécurisées. Nous recommandons de sauvegarder et d'effacer votre appareil pour plus de sécurité.</p>
+						</div>
+					</li>
+					<li>
+						<div class="question-container">
+							<h4 class="question">Puis-je parler à quelqu'un directement ?</h4>
+							<i class="fa fa-angle-double-down arrow-down" aria-hidden="true"></i>
+						</div>
+						<div class="reponse-container">
+							<p class="reponse">Absolument ! Contactez nous via la page <a href="contact-us.html">contact</a>, on se cheargera de répondre à vos questions.</p>
+						</div>
+					</li>
+					<li>
+						<div class="question-container">
+							<h4 class="question">Le travail de réparation est-il garanti ?</h4>
+							<i class="fa fa-angle-double-down arrow-down" aria-hidden="true"></i>
+						</div>
+						<div class="reponse-container">
+							<p class="reponse">Oui, toutes nos réparations bénéficient d'une garantie de 90 jours, à l'exception des dommages liquides.</p>
+						</div>
+					</li>
+					<li>
+						<div class="question-container">
+							<h4 class="question">Allez-vous effacer les données de mon appareil ?</h4>
+							<i class="fa fa-angle-double-down arrow-down" aria-hidden="true"></i>
+						</div>
+						<div class="reponse-container">
+							<p class="reponse">Nous recommandons de sauvegarder et d'effacer vos données avant l'envoi, mais nous ne modifierons ni n'effacerons vos données sans votre permission.</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</main>
+{% endblock %}

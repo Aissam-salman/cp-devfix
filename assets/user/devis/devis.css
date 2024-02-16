@@ -1,0 +1,210 @@
+.btn-primary.disabled, .btn-primary:disabled {
+    cursor: not-allowed;
+    background: #000;
+    opacity: 0.4 !important;
+    border-color: #000;
+}
+.btn-primary.disabled, .btn-primary:disabled:hover {
+    background: #000;
+    color: #fff;
+}
+
+
+.liste-des-pannes {
+    list-style: none;
+    font-size: 15px;
+    color: var(--primary_color);
+    font-weight: 900;
+    text-decoration: underline;
+}
+
+
+.devis-form-container {
+    max-width: 50vw;
+}
+
+.devis-form {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 0;
+}
+
+.form-message {
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+
+.bottom-space {
+    margin-bottom: 20px;
+}
+
+.devis-form .start-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+.buttons-container {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.btn {
+    border-radius: 40px;
+    width: 250px !important;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border: 3px solid #000;
+    cursor: pointer;
+    transition: all ease-in-out 200ms;
+}
+
+.btn-secondary {
+    margin: 0 0 0 10px;
+    color: #000;
+    background: #fff;
+}
+.btn-primary:hover {
+    color: #000;
+    background: #fff;
+    border: 3px solid #000;
+}
+.btn-secondary:hover {
+    background: #000;
+    color: #fff;
+    border: 3px solid #000;
+}
+
+.hide-form {
+    display: none;
+}
+
+
+
+/* CONDITION POP-UP */
+.check-message {
+    cursor: initial;
+    font-weight: 500;
+}
+.condition-pop-up-button {
+    text-decoration: underline;
+    font-weight: 900;
+    color: var(--primary_color);
+    cursor: pointer;
+}
+
+.condition-pop-up-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.236);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all ease-in-out 200ms;
+}
+
+.condition-pop-up {
+    position: relative;
+    width: 50vw;
+    height: 70vh;
+    padding: 20px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.condition-pop-up h3 {
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.close-icon-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 2px solid var(--primary_color);
+    cursor: pointer;
+    transition: all ease-in-out 200ms;
+}
+.close-icon-container:hover {
+    background: var(--primary_color);
+    color: #fff;
+    border: 10px solid var(--primary_color);
+}
+
+.close-icon-container .close-icon {
+    font-size: 20px;
+    color: var(--primary_color);
+    transition: all ease-in-out 100ms;
+}
+
+.close-icon-container:hover .close-icon {
+    color: #fff;
+}
+
+.condition-pop-up p {
+    text-align: justify;
+    margin: 0;
+}
+
+.hide-pop-up {
+    visibility: hidden;
+    opacity: 0;
+}
+
+
+
+@media (max-width: 768px) {
+    .devis-form-container {
+        max-width: 95vw;
+    }
+
+    .form-check-label {
+        text-align: left;
+    }
+
+    .buttons-container {
+        flex-direction: column;
+    }
+
+    .btn {
+        margin: 5px;
+    }
+
+    .condition-pop-up {
+        width: 95vw;
+        height: 80vh;
+    }
+    .close-icon-container {
+        top: 10px;
+        right: 10px;
+        width: 25px;
+        height: 25px;
+    }
+    .close-icon-container .close-icon {
+        font-size: 15px;
+    }
+
+}

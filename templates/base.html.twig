@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <!-- Document Title -->
+        <meta name="keywords" content="DevFix">
+        <meta name="description" content="DevFix le meilleur reparateur!">
+		<title>{% block title %}DevFix{% endblock %}</title>
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="{{ asset('user/images/favicon.png') }}">
+
+        {% block stylesheets %}
+            <link href="{{ asset('user/css/fonts/font.css') }}" rel="stylesheet" type="text/css">
+            <link rel="stylesheet" href="{{ asset('user/css/style.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('user/css/color.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('user/css/icon-font.min.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('user/css/base.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('user/css/log_in_log_out.css') }}" type="text/css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="{{ asset('user/js/menu.js') }}" defer></script>
+            {% if not app.user %}
+                <script src="{{ asset('user/js/log_in.js') }}" defer></script>
+            {% endif %}
+        {% endblock %}
+    </head>
+
+    <body class="stretched no-transition home-page">
+
+        {% if app.user %}
+            <!-- LOG OUT BUTTON -->
+            <div class="log-out-icon-container log-icon-container logged-icon-container" id="log-out-icon-container">
+                <a href="{{ path('app_auth_deco') }}">
+                    <i class="fa fa-sign-out log-out-icon show-icon log-icon" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="profile-icon-container log-icon-container logged-icon-container" id="profile-icon-container">
+                <a href="{{ url('app_user-dashboard') }}">
+                    <i class="fa fa-user profile-icon show-icon log-icon" aria-hidden="true"></i>
+                </a>
+            </div>
+        {% else %}
+            <!-- LOG IN BUTTON -->
+            <div class="log-in-icon-container log-icon-container" id="log-in-icon-container">
+                <i class="fa fa-user log-in-icon show-icon log-icon" aria-hidden="true"></i>
+                <i class="fa fa-times log-in-close-icon" aria-hidden="true"></i>
+            </div>
+            <!-- SLIDE LOG IN -->
+            <div class="log-in-container">
+                <form method="post" action="{{path('app_auth')}}">
+                    <div class="input-container">
+                        <input required type="email" name="_username" class="email-log-in" placeholder="Email"/>
+                    </div>
+                    <div class="input-container">
+                        <input required type="password" name="_password" class="password-log-in" placeholder="Password"/>
+                    </div>
+                    <p class="lost-password">Vous avez oublié votre
+                        <a href="#">mot de passe?</a>
+                    </p>
+                    <input type="hidden" name="_target_path" value="{{path('app_auth')}}"/>
+                    <input type="hidden" name="_csrf_token" value="{{csrf_token('authenticate')}}"/>
+                    <button type="submit" class="btn btn-primary">Re-Bonjour!</button>
+                </form>
+            </div>
+        {% endif %}
+
+
+        <!-- Window -->
+        <div id="wrapper" class="clearfix window">
+            <header id="header" class="transparent_header_bg">
+                <div id="header-wrap">
+                    <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+                    <div class="container clearfix container-header-width">
+                        <div class="row header_full_width">
+                            <div id="top-header-logo" class="col-9 col-md-3">
+                                <!-- Logo -->
+                                <div id="logo">
+                                    <a href="{{ url('app_homepage') }}" class="header_logo">
+                                        <img src="{{ asset('user/images/' ~ parametre.logoEntreprise) }}" alt="{{ parametre.nomEntreprise }}" width="" height="100">
+                                    </a>
+                                    <a hhref="homepage" class="sticky_logo">
+                                        <img src="{{ asset('user/images/' ~ parametre.logoEntreprise) }}" alt="{{ parametre.nomEntreprise }}" width="" height="80">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <nav id="primary-menu">
+                                <ul class="main_menu_section">
+                                    <li class="shop-li">
+                                        <a href="https://shopify.com" class="shop header_link">
+                                            <div>Boutique en ligne</div>
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="{{ url('app_contact') }}" class="contact-link header_link">
+                                            <div>Contact</div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            {% block body %}
+                {# Le bloc qui affiche le 'main' autres pages #}
+            {% endblock %}
+
+            <footer id="footer">
+                <div class="container">
+                    <!-- Footer Widgets -->
+                    <div class="footer-widgets-wrap pb-3 clearfix">
+                        <div class="widget widget_links app_landing_widget_link clearfix">
+                            <h4>Legales</h4>
+                            <ul>
+                                <li>
+                                    <a class="" href="{{ url('app_legal-mentions') }}">Mentions légales</a>
+                                </li>
+                                <li>
+                                    <a class="" href="{{ url('app_privacy-policy') }}">Politique de confidentialité</a>
+                                </li>
+                                <li>
+                                    <a class="" href="{{ url('app_terms-and-conditions') }}">Conditions générales</a>
+                                </li>
+                                <li>
+                                    <a class="" href="{{ url('app_cookies-policy') }}">Politique relative aux cookies</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="widget widget_links app_landing_widget_link clearfix">
+                            <h4>DevFIx</h4>
+                            <ul>
+                                <li>
+                                    <a class="" href="{{ url('app_contact') }}">Contact Nous</a>
+                                </li>
+                                <li>
+                                    <a class="" href="{{ url('app_services') }}">Services</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="widget widget_links app_landing_widget_link clearfix">
+                            <h4>Social</h4>
+                            <div class="footer-social-list">
+                                <a href="https://facebook.com" target="_blank" class="global-icon-container"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="https://instagram.com" target="_blank" class="global-icon-container"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="https://snapchat.com" target="_blank" class="global-icon-container"><i class="fa fa-snapchat-ghost" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="copyrights" class="nobg border-top footer_bottom">
+                    <div class="container clearfix">
+                        <div class="row">
+                            <div class="col-md-6">
+                                © {{ "now"|date("Y") }} {{ parametre.nomEntreprise }}. Tous droits réservés.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

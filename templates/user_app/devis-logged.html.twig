@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('user/devis/devis.css') }}" type="text/css">
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('user/devis/devis-logged.js') }}" defer></script>
+{% endblock %}
+
+{% block body %}
+	<main>
+		<div class="container clearfix center devis-form-container">
+			<div class="heading-block topmargin-sm bottommargin-sm center">
+				<h3>Demander le devis</h3>
+				<h4>Le Totale de la réparation est de:
+					<span>70<span>
+							€</span>
+					</span>
+				</h4>
+			</div>
+
+			<form class="row g-3 devis-form">
+				<div class="col-12">
+					<div class="form-check bottom-space">
+						<input class="form-check-input" type="checkbox" id="gridCheck">
+						<label class="form-check-label check-message" for="gridCheck">
+							J’accepte les
+							<span class="condition-pop-up-button">conditions generales</span>
+						</label>
+					</div>
+				</div>
+
+				<div class="col-12 buttons-container">
+					<button type="submit" class="btn btn-primary" id="confirmation-sign-in-btn">Je reçoit mon devis</button>
+				</div>
+			</form>
+		</div>
+
+		<div class="condition-pop-up-container hide-pop-up">
+			<div class="condition-pop-up">
+				<div class="close-icon-container">
+					<i class="fa fa-times condition-pop-up-close-icon close-icon" aria-hidden="true"></i>
+				</div>
+				<h3>Conditions Generales</h3>
+				<div class="condition-pop-up-content">
+					<p>
+						Dernière mise à jour : [Date]		
+						[Nom de l'Entreprise] ("nous", "notre" ou "nos") s'engage à protéger la vie privée de ses utilisateurs ("vous").
+						Cette Politique de Confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos
+						informations lorsque vous visitez notre site web [URL du site web], y compris tout autre média, canal de médias,
+						site web mobile ou application mobile liée ou connectée à celui-ci.
+						Veuillez lire attentivement cette Politique de Confidentialité avant d'utiliser notre site web, car elle vous aidera
+						à comprendre quelles données nous collectons, comment nous les utilisons et quels sont vos droits.
+						Collecte d'Informations
+						Nous pouvons collecter des informations personnelles identifiables, telles que votre nom, adresse e-mail, et numéro
+						de téléphone, lorsque vous volontairement nous les fournissez. Si vous accédez à notre site via un appareil mobile,
+						nous pouvons également collecter des informations sur votre appareil mobile, son système d'exploitation, et votre
+						localisation.
+					</p>
+				</div>
+			</div>
+		</div>
+	</main>
+{% endblock %}

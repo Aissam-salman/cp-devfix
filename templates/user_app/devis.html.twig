@@ -1,0 +1,185 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+	{{ parent() }}
+
+		<link rel="stylesheet" href="{{ asset('user/devis/devis.css') }}" type="text/css">
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{% if app.user %}
+		<script src="{{ asset('user/devis/devis-logged.js') }}" defer></script>
+	{% else %}
+		<script src="{{ asset('user/devis/devis.js') }}" defer></script>
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+	<main>
+		<div class="container clearfix center devis-form-container">
+			<div class="heading-block topmargin-sm bottommargin-sm center">
+				<h3>Demander le devis</h3>
+				<h4>Le Totale de la réparation est de:
+					<span>{{ total|number_format(2, ',', ' ') }}<span>
+							€</span>
+					</span>
+				</h4>
+			</div>
+			
+			{% if app.user %}
+				<form method="post" action="{{ path('app_create_devis') }}">
+					<ul>
+						{% for tarif in tarifs %}
+							<li class="liste-des-pannes">
+								<input type="checkbox" name="tarifIds[]" id="tarif{{ tarif.idTarif }}" value="{{ tarif.idTarif }}" checked>
+								<label for="tarif{{ tarif.idTarif }}">
+									{{ tarif.idPanne.libPanne }} :
+									{{ tarif.montant|number_format(2, ',', ' ') }} €
+								</label>
+							</li>
+						{% endfor %}
+					</ul>
+
+					<div class="col-12">
+						<div class="form-check bottom-space">
+							<input class="form-check-input logged-in-checkbox" type="checkbox">
+							<label class="form-check-label check-message">
+								J’accepte les
+								<span class="condition-pop-up-button">conditions generales</span>
+							</label>
+						</div>
+					</div>
+
+					<div class="col-12 buttons-container">
+						<input type="hidden" name="_target_path"/>
+						<button disabled type="submit" class="btn btn-primary" id="confirmation-btn">Je reçoit mon devis</button>
+					</div>
+				</form>
+			{% else %}
+				<form method="post" action="{{path('app_inscription')}}">
+					<ul>
+						{% for tarif in tarifs %}
+							<li class="liste-des-pannes">
+								<input type="checkbox" name="tarifIds[]" id="tarif{{ tarif.idTarif }}" value="{{ tarif.idTarif }}" checked>
+								<label for="tarif{{ tarif.idTarif }}">
+									{{ tarif.idPanne.libPanne }} :
+									{{ tarif.montant|number_format(2, ',', ' ') }} €
+								</label>
+							</li>
+						{% endfor %}
+					</ul>
+					<div class="row g-3 devis-form sign-in-form">
+						<p class="col-md-12 form-message">Inscrit toi pour recevoir ton devis!</p>
+						<div class="col-md-6 start-flex bottom-space">
+							<label for="inputEmail4" class="form-label">Nom*</label>
+							<input name="nom" required type="text" class="form-control" id="inputNom">
+						</div>
+						<div class="col-md-6 start-flex bottom-space">
+							<label for="inputPassword4" class="form-label">Prénom*</label>
+							<input name="prenom" required type="text" class="form-control" id="inputPrenome">
+						</div>
+						<div class="col-md-6 start-flex bottom-space">
+							<label for="inputEmail4" class="form-label">Email*</label>
+							<input name="email" required type="email" class="form-control" id="inputEmail">
+						</div>
+						<div class="col-md-6 start-flex bottom-space">
+							<label for="inputPassword4" class="form-label">Password*</label>
+							<input name="mdp" required type="password" class="form-control" id="inputPassword">
+						</div>
+						<div class="col-12 start-flex bottom-space">
+							<label for="inputAddress" class="form-label">Télephone*</label>
+							<input name="numero" required type="number" class="form-control" id="inputTelephone" placeholder="01 12 34 56 78">
+						</div>
+						<div class="col-12 start-flex bottom-space">
+							<label for="inputAddress" class="form-label">Adresse*</label>
+							<input name="adresse" required type="text" class="form-control" id="inputAddress" placeholder="1 Rue De..." aria-placeholder="">
+						</div>
+						<div class="col-12 start-flex bottom-space">
+							<label for="inputAddress" class="form-label">Complement d'adresse*</label>
+							<input name="complement_adresse" required type="text" class="form-control" id="inputAddress2" placeholder="Appartement N...">
+						</div>
+						<div class="col-md-6 start-flex bottom-space">
+							<label for="inputEmail4" class="form-label">Ville*</label>
+							<input name="ville" required type="text" class="form-control" id="inputVille" placeholder="Lille">
+						</div>
+						<div class="col-md-6 start-flex bottom-space">
+							<label for="inputPassword4" class="form-label">Code Postale*</label>
+							<input name="cp" required type="number" class="form-control" id="inputCP" placeholder="59000">
+						</div>
+
+						<div class="col-12">
+							<div class="form-check bottom-space">
+								<input class="form-check-input sign-in-checkbox" type="checkbox">
+								<label class="form-check-label check-message">
+									J’accepte les
+									<span class="condition-pop-up-button">conditions generales</span>
+								</label>
+							</div>
+						</div>
+
+						<div class="col-12 buttons-container">
+							<button disabled type="submit" class="btn btn-primary" id="confirmation-sign-in-btn">Je reçoit mon devis</button>
+							<div class="btn btn-secondary" id="log-in-btn">Déjà inscrit ?</div>
+						</div>
+					</div>
+				</form>
+
+				<form class="row g-3 devis-form log-in-form hide-form" method="post" action="{{path('app_auth')}}">
+						<p class="col-md-12 form-message">Connecte toi pour recevoir ton devis!</p>
+						<div class="col-md-6 start-flex bottom-space">
+							<label for="inputEmail4" class="form-label">Email</label>
+							<input required type="email" name="_username" class="form-control" id="inputEmail">
+						</div>
+						<div class="col-md-6 start-flex bottom-space">
+							<label for="inputPassword4" class="form-label">Password</label>
+							<input required type="password" name="_password" class="form-control" id="inputPassword">
+						</div>
+
+						<div class="col-12">
+							<div class="form-check bottom-space">
+								<input class="form-check-input log-in-checkbox" type="checkbox">
+								<label class="form-check-label check-message">
+									J’accepte les
+									<span class="condition-pop-up-button">conditions generales</span>
+								</label>
+							</div>
+						</div>
+
+						<div class="col-12 buttons-container">
+							<input type="hidden" name="_target_path" value="{{path('app_auth')}}"/>
+							<input type="hidden" name="_csrf_token" value="{{csrf_token('authenticate')}}"/>
+							<button disabled type="submit" class="btn btn-primary" id="confirmation-log-in-btn">Je reçoit mon devis</button>
+							<div class="btn btn-secondary" id="sign-in-btn">Pas inscrit ?</div>
+						</div>
+				</form>
+			{% endif %}
+		</div>
+
+		<div class="condition-pop-up-container hide-pop-up">
+			<div class="condition-pop-up">
+				<div class="close-icon-container">
+					<i class="fa fa-times condition-pop-up-close-icon close-icon" aria-hidden="true"></i>
+				</div>
+				<h3>Conditions Generales</h3>
+				<div class="condition-pop-up-content">
+					<p>
+						Dernière mise à jour : [Date]		
+													[Nom de l'Entreprise] ("nous", "notre" ou "nos") s'engage à protéger la vie privée de ses utilisateurs ("vous").
+													Cette Politique de Confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos
+													informations lorsque vous visitez notre site web [URL du site web], y compris tout autre média, canal de médias,
+													site web mobile ou application mobile liée ou connectée à celui-ci.
+													Veuillez lire attentivement cette Politique de Confidentialité avant d'utiliser notre site web, car elle vous aidera
+													à comprendre quelles données nous collectons, comment nous les utilisons et quels sont vos droits.
+													Collecte d'Informations
+													Nous pouvons collecter des informations personnelles identifiables, telles que votre nom, adresse e-mail, et numéro
+													de téléphone, lorsque vous volontairement nous les fournissez. Si vous accédez à notre site via un appareil mobile,
+													nous pouvons également collecter des informations sur votre appareil mobile, son système d'exploitation, et votre
+													localisation.
+					</p>
+				</div>
+			</div>
+		</div>
+	</main>
+{% endblock %}

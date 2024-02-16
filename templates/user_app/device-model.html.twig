@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('user/device-model/device-model.css') }}" type="text/css">
+{% endblock %}
+
+
+{% block body %}
+<main>
+    <div class="heading-block topmargin-sm bottommargin-sm center devices_corner_section">
+        <h3>Selectionner votre modèle</h3>
+    </div>
+    <div id="portfolio" class="portfolio grid-container clearfix select_model center-grid">
+        {% if modeles %}
+			{% for modele in modeles %}
+			<article class="portfolio-item pf-media pf-icons">
+				<div class="inner">
+					<div class="portfolio-image">
+						<a href="{{ path('app_device-repair', {'idModele': modele.idModele}) }}">
+							<img src="{{ asset('user/images/mobile/' ~ modele.imgModele) }}" alt="{{ modele.libModele }}">
+						</a>
+						<div class="portfolio-overlay">
+							<a href="{{ path('app_device-repair', {'idModele': modele.idModele}) }}" class="center-icon">
+								<i class="icon-line-ellipsis"></i>
+							</a>
+						</div>
+					</div>
+					<div class="portfolio-desc">
+						<span>{{ modele.libModele }}</span>
+					</div>
+				</div>
+			</article>
+			{% endfor %}
+		{% else %}
+		<div class="center" role="alert">
+				<p>Pas de modèles disponible pour cette marque</p>
+				<div class="list-inline">
+					<a href="{{ url('app_homepage') }}#product-categories" class="btn btn-lg mr-3 btn-outline-light rounded-pill ">
+						recommencer
+					</a>
+				</div>
+			</div>
+		{% endif %}
+    </div>
+</main>
+{% endblock %}

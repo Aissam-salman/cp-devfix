@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('user/contact-us/contact-us.css') }}" type="text/css">
+{% endblock %}
+
+
+{% block body %}
+	<main>
+		<section id="google_map" class="gmap">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10110.625615590245!2d3.1661690874976807!3d50.68920254621849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3296e2bdd963f%3A0x69ed72ed7d98b3ae!2sdevfix!5e0!3m2!1sfr!2sfr!4v1707307146031!5m2!1sfr!2sfr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</section>
+
+		<section id="content" class="contact_detail">
+			<div class="content-wrap">
+				<div class="container clearfix">
+					<div class="row">
+						<div class="col-xl-8 col-lg-8">
+							<div class="nobottommargin contact_track_section">
+								<h3 class="nobottommargin">Envoyez-nous un Email</h3>
+								<p>Si vous êtes intéressé pour obtenir un devis pour l'un de nos services, vous pouvez utiliser le formulaire ci-dessous et nous vous répondrons dès que possible.</p>
+								<form class="nobottommargin" action="{{ path('app_contact') }}" method="post" id="contact_form">
+									<div class="col_one_third form-group">
+										<input type="text" name="name" id="name" placeholder="Entrez votre nom" class="form-control" value="">
+									</div>
+									<div class="col_one_third form-group">
+										<input type="tel" id="cell_phone" name="cell_phone" class="form-control" placeholder="Entrez votre téléphone" value="">
+										<input type="hidden" name="phone" id="phone">
+									</div>
+									<div class="col_one_third col_last form-group">
+										<input type="text" name="email" id="email" placeholder="Entrez votre email" class="form-control" value="">
+									</div>
+									<div class="clear"></div>
+									<div class="col_full form-group">
+										<input type="text" name="subject" id="subject" placeholder="Entrez le sujet" class="form-control">
+									</div>
+									<div class="clear"></div>
+									<div class="col_full form-group">
+										<textarea name="message" id="message" placeholder="Entrez votre message" class="form-control" rows="6" cols="30"></textarea>
+									</div>
+									<div class="col_full">
+										<div id="g_form_gcaptcha"></div>
+										<input type="hidden" id="g_captcha_token" name="g_captcha_token" value="">
+									</div>
+
+									<div class="col_full mb-0">
+										<button class="button button-3d nomargin sbmt_button rounded-pill" type="submit" value="Submit">Envoyer</button>
+										<input type="hidden" name="submit_form" id="submit_form">
+									</div>
+									<input type="hidden" name="_token" value="{{ csrf_token('contact_form') }}">
+									<input type="hidden" name="mode" id="mode" value="contact">
+								</form>
+							</div>
+						</div>
+						<!-- Sidebar -->
+						<div class="col-xl-4 col-lg-4">
+							<div class="card nobottommargin">
+								<div class="card-body">
+									<address>
+										<strong class="contact_h">Infos :</strong><br>
+										<strong>{{ parametre.nomEntreprise }}</strong><br>
+										Siret : {{ parametre.siren }}<br>
+										{{ parametre.adresseEntreprise }}<br>
+										France
+									</address>
+									<abbr title="Phone">
+										<strong>Téléphone :</strong>
+									</abbr>
+									{{ parametre.telephoneEntreprise }}<br>
+									<abbr title="Email">
+										<strong>Email :</strong>
+									</abbr>
+									{{ parametre.emailEntreprise }}<br>
+									<div class="widget noborder notoppadding">
+										<a href="https://facebook.com" target="_blank" class="global-icon-container">
+											<i class="fa fa-facebook" aria-hidden="true"></i>
+										</a>
+										<a href="https://instagram.com" target="_blank" class="global-icon-container">
+											<i class="fa fa-instagram" aria-hidden="true"></i>
+										</a>
+										<a href="https://snapchat.com" target="_blank" class="global-icon-container">
+											<i class="fa fa-snapchat-ghost" aria-hidden="true"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main>
+{% endblock %}
+

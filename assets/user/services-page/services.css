@@ -1,0 +1,42 @@
+#head-graphics {
+    position: relative;
+    height: 200px;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 1;
+}
+#head-graphics::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #00725b;
+}
+
+.service-banner {
+    z-index: 0;
+    opacity: 0.2;
+    position: absolute;
+    margin: 0;
+    transform: translateY(-50%);
+    top: 0;
+    left: 0;
+}
+
+.service-list-container h3 {
+    font-size: 15px !important;
+}
+
+@media screen and (max-width: 768px) {
+    .service-banner {
+        top: auto;
+        transform: translateY(0%);
+    }
+}
