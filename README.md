@@ -2,6 +2,9 @@
 
 Application symfony pour la gestion des réparations de téléphone, tablet, pc, etc.
 
+# Détails : 
+[Dossier du projet](https://github.com/Aissam-salman/cp-devfix/blob/d181673baeb5c6558cb09379927d990e3e5e1108/Dossier-stage-devfix_aissam-lamjadab.pdf)
+
 ## stack
 - php smyfony
 - mysql
